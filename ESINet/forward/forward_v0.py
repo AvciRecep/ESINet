@@ -55,13 +55,13 @@ def create_forward_model(savepath, sampling='ico3', info=None, verbose=0):
                                         subjects_dir=subjects_dir, add_dist=False,
                                         n_jobs=-1, verbose=verbose)
 
-    src.save('{}/{}-src.fif'.format(savepath, sampling), overwrite=True)
+    src.save('{}\\{}-src.fif'.format(savepath, sampling), overwrite=True)
 
     # Forward Model
     fwd = mne.make_forward_solution(info, trans=trans, src=src,
                                     bem=bem, eeg=True, mindist=5.0, n_jobs=-1,
                                     verbose=verbose)
-    mne.write_forward_solution(savepath+'/{}-fwd.fif'.format(subject),fwd, 
+    mne.write_forward_solution(savepath+'\\{}-fwd.fif'.format(subject),fwd, 
                             overwrite=True, verbose=verbose)
     # Fixed Orientations
     fwd_fixed = mne.convert_forward_solution(fwd, surf_ori=True, force_fixed=True,
@@ -79,9 +79,9 @@ def create_forward_model(savepath, sampling='ico3', info=None, verbose=0):
                                 method="dSPM", pick_ori="normal",
                                 return_residual=True, verbose=verbose)
 
-    stc.save(savepath+"/ResSourceEstimate".format(), ftype='stc', verbose=verbose)
+    stc.save(savepath+"\\ResSourceEstimate".format(), ftype='stc', verbose=verbose)
 
-    mne.minimum_norm.write_inverse_operator(savepath+"/inverse-inv.fif",
+    mne.minimum_norm.write_inverse_operator(savepath+"\\inverse-inv.fif",
                         inv, verbose=verbose)
     tris = inv['src'][0]['use_tris']
     # inv.save(, ftype='fif')
@@ -100,14 +100,13 @@ def create_forward_model(savepath, sampling='ico3', info=None, verbose=0):
     pos = np.concatenate([pos_left, pos_right], axis=0)
 
     # save leadfield
-    fn = "{}/leadfield.pkl".format(savepath)
+    fn = "{}\\leadfield.pkl".format(savepath)
     with open(fn, 'wb') as f:
         pkl.dump([leadfield], f)
 
     # save pos
-    fn = "{}/pos.pkl".format(savepath)
+    fn = "{}\\pos.pkl".format(savepath)
     with open(fn, 'wb') as f:
-        print(pos)
         pkl.dump([pos], f)
 
     fn =f'{savepath}/info.pkl'
