@@ -14,13 +14,9 @@ create_forward_model(pth_fwd, sampling='ico3')
 if True:
     sources_sim = run_simulations(pth_fwd, n_simulations=100, durOfTrial=0)
     a = sources_sim;
-    print(a.shape)
     ids = np.nonzero(a)
-    print(np.amax(a[ids]))
     eeg_sim = create_eeg(sources_sim, pth_fwd)
-    print(eeg_sim.shape)
     eeg_sim2 = eeg_sim[:,0,:,:]
-    print(eeg_sim2.shape)
 ### Plot a simulated sample and corresponding EEG
 if False:
     #%matplotlib qt
