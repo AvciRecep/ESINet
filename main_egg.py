@@ -17,8 +17,8 @@ if __name__ == '__main__':
     egg_sim = import_simulated_data()
 
     # Initialize the artificial neural network model
-    input_dim = ? #total number of voxels
-    output_dim = ? #number of selected nodes
+    input_dim = ? # number of voxels
+    output_dim = ? # number of selected nodes
     model = get_model(input_dim, output_dim)
 
     # Train the model
