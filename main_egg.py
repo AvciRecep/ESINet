@@ -12,7 +12,10 @@ def import_simulated_data():
     return egg_sim # np array of nSim x nNodes x 1
 
 if __name__ == '__main__':
-    ### Load and train ConvDip with simulated data
+    # Call import functions
+    sources_sim = import_source()
+    egg_sim = import_simulated_data()
+
     # Initialize the artificial neural network model
     input_dim = ? #total number of voxels
     output_dim = ? #number of selected nodes
@@ -21,7 +24,8 @@ if __name__ == '__main__':
     # Train the model
     model, history = train_model(model, sources_sim, egg_sim, delta=1)
 
-    ### Test the model
-    # Predict
+    # Test the model
     source_predicted = predict(model, egg_sample, pth_fwd)
-    # Modify predict function not to use pth_fwd or leadfield.
+    # Modify 'predict' function not to use pth_fwd or leadfield.
+
+    # Evaluate the prediction
